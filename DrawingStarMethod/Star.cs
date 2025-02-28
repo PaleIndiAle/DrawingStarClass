@@ -9,6 +9,7 @@ namespace DrawingStarMethod
 {
     internal class Star
     {
+        Random randgen = new Random();
         public PointF[] starPoints = new PointF[10];
         public Pen starPen;
         public int x, y;
@@ -27,7 +28,7 @@ namespace DrawingStarMethod
 
         private void SetPoints()
         {
-            float scale = size / 206;
+            scale = size / 206;
 
             starPoints = new PointF[10];
             starPoints[0] = new PointF(0 * scale + x, 74 * scale + y);
@@ -40,6 +41,28 @@ namespace DrawingStarMethod
             starPoints[7] = new PointF(103 * scale + x, 150 * scale + y);
             starPoints[8] = new PointF(39 * scale + x, 196 * scale + y);
             starPoints[9] = new PointF(64 * scale + x, 122 * scale + y);
+        }
+
+        public void Move()
+        {
+            x += 4;
+
+            SetPoints();
+        }
+
+        public void Resize()
+        {
+            if (size < 60)
+            {
+                size++;
+            }
+            else
+            {
+                size--;
+            }
+
+
+            SetPoints();
         }
     }
 }
